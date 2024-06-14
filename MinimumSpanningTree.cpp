@@ -65,8 +65,8 @@ void loadFromFile(vector<Star>& listStar, vector<Edge>& listEdge, const string& 
                 getline(ss, destination, '\t');
                 ss >> dist;
 
-                edge.source = source[0] - 'A'; // Assuming star names are A to T
-                edge.destination = destination[0] - 'A'; // Assuming star names are A to T
+                edge.source = source[0] - 'A'; 
+                edge.destination = destination[0] - 'A'; 
                 edge.distance = dist;
 
                 listEdge.push_back(edge);
