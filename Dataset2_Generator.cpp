@@ -97,7 +97,7 @@ void edgeAttribute(Edge listEdge[], Star listStar[], vector<vector<int>>& adjace
     for (int src = 0; src < 20; src++){
         while (adjacencyList[src].size() < 3){
             int end = rand() % 20;
-            if (src != end && !isConnected(adjacencyList, src, end) && !isConnected(adjacencyList, end, src)){
+            if (src != end && !isConnected(adjacencyList, src, end)){
                 addEdge(adjacencyList, src, end);
                 sum++;
             }
@@ -108,7 +108,7 @@ void edgeAttribute(Edge listEdge[], Star listStar[], vector<vector<int>>& adjace
     while (sum < 54) {
         int srcStar = rand() % 20;
         int endStar = rand() % 20;
-        if (srcStar != endStar && !isConnected(adjacencyList, srcStar, endStar) && !isConnected(adjacencyList, endStar, srcStar)) {
+        if (srcStar != endStar && !isConnected(adjacencyList, srcStar, endStar)) {
             addEdge(adjacencyList, srcStar, endStar);
             sum++;
         }
