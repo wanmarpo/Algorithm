@@ -13,7 +13,6 @@ void printArray(const vector<int>& arr) {
         cout << i << " ";
     }
     cout << endl;
-    cout.flush(); // force the buffer to be flushed
 }
 
 int main() {
@@ -51,7 +50,7 @@ int main() {
 
         
         // print out the time taken
-        cout << "Time taken for sorting dataset " << i << ": " << duration.count() << " seconds" << endl;
+        cout << "Time taken for selection sort of dataset " << i << ": " << duration.count() << " seconds" << endl;
 
         // Write the sorted array to a file
         string outputFilename = "sorted_dataset_" + to_string(i) + ".txt";
@@ -73,7 +72,5 @@ int main() {
 
     // Inform of the end of the output
     cout << "done" << endl;
-    cout.flush(); // force the buffer to be flushed
 
-    return 0;
 }
