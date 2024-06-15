@@ -25,7 +25,7 @@ struct Edge
 
 // function to check if a number has (0, 2, 3, 4, 5, 6, 7)
 bool numberChecker(int number) {
-    const set<int> id_digits = {0, 3, 4, 6, 7, 8, 9};
+    const set<int> id_digits = {0, 2, 3, 4, 5, 6, 7};
     while (number > 0) {
         int num = number % 10;
         if (id_digits.find(num) == id_digits.end()) {
