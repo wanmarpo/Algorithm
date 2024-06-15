@@ -23,7 +23,7 @@ struct Edge
     int distance;
 };
 
-// function to check if a number has (0, 3, 4, 6, 7, 8, 9)
+// function to check if a number has (0, 2, 3, 4, 5, 6, 7)
 bool numberChecker(int number) {
     const set<int> id_digits = {0, 3, 4, 6, 7, 8, 9};
     while (number > 0) {
@@ -156,6 +156,8 @@ void saveToFile(const Star listStar[], const Edge listEdge[], const string& file
 }
 
 int main() {
+    long long seed = 1211102060LL + 1221303348LL + 1221300839LL;
+    srand(seed);
     // star names (A-T)
     char starName[] = {'A', 'B', 'C', 'D', 'E', 
                         'F', 'G', 'H', 'I', 'J', 
