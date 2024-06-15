@@ -44,9 +44,7 @@ void heapSort(vector<int>& arr) {
 // Print the current working directory
 int main() {
 
-    cout << "Current working directory: " << fs::current_path() << endl;
-
-    for (int i = 1; i < 7; i++) {
+    for (int i = 1; i < 7; i++) {   
         vector<int> arr;
         string filename = "dataset_" + to_string(i) + ".txt"; // able to read and be able to execute all 6 datasets automatically
 
@@ -61,7 +59,8 @@ int main() {
 
         // Read data from file
         int num;
-        while (file >> num) {
+        while (file >> num) 
+        {
             arr.push_back(num);
         }
         file.close();
@@ -82,6 +81,7 @@ int main() {
             for (int num : arr) {
                 outputFile << num << " ";
             }
+            
             outputFile << endl;
             outputFile.close();
             cout << "Written sorted array of number  " << i << endl;
@@ -89,5 +89,4 @@ int main() {
             cerr << "Unable to open output file: " << i << endl;
         }
     }
-    return 0;
 }
