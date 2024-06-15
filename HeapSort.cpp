@@ -7,8 +7,7 @@
 using namespace std;
 namespace fs = std::filesystem;
 
-// To heapify a subtree rooted with node i
-// which is an index in arr[]. n is size of heap
+// Heapify function for max heap
 void heapify(vector<int>& arr, int N, int i) {
     int largest = i;
     int l = 2 * i + 1;
