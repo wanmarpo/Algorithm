@@ -55,7 +55,7 @@ int main() {
         // Debugging output: size of the array
         cout << "Array size: " << arr.size() << endl;
 
-        // Using std::sort instead of selectionsort so that it is faster 
+        // SelectionSort
         selectionsort(arr);
 
         // Stop timing
