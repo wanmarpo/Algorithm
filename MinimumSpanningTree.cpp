@@ -4,8 +4,10 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <chrono>
 
 using namespace std;
+using namespace chrono;
 
 struct Star {
     string name;
@@ -66,7 +68,7 @@ void loadFromFile(vector<Star>& listStar, vector<Edge>& listEdge, const string& 
                 ss >> dist;
 
                 edge.source = source[0] - 'A'; 
-                edge.destination = destination[0] - 'A'; 
+                edge.destination = destination[0] - 'A';
                 edge.distance = dist;
 
                 listEdge.push_back(edge);
@@ -102,6 +104,21 @@ void Union(vector<int>& parent, vector<int>& rank, int x, int y) {
     }
 }
 
+// Function to calculate and print the space complexity
+void calculateSpaceComplexity(const vector<Star>& listStar, const vector<Edge>& listEdge, const vector<int>& parent, const vector<int>& rank) {
+    size_t starSpace = listStar.size() * sizeof(Star);
+    size_t edgeSpace = listEdge.size() * sizeof(Edge);
+    size_t parentSpace = parent.size() * sizeof(int);
+    size_t rankSpace = rank.size() * sizeof(int);
+    size_t totalSpace = starSpace + edgeSpace + parentSpace + rankSpace;
+
+    cout << "SPACE COMPLEXITY CALCULATION:\n";
+    cout << "listStar space: " << starSpace << " bytes\n";
+    cout << "listEdge space: " << edgeSpace << " bytes\n";
+    cout << "Parent array space: " << parentSpace << " bytes\n";
+    cout << "Rank array space: " << rankSpace << " bytes\n";
+    cout << "Total space: " << totalSpace << " bytes\n";
+}
 
 // Function to perform Kruskal's algorithm and find the MST
 void kruskalMST(vector<Star>& listStar, vector<Edge>& listEdge) {
@@ -145,15 +162,31 @@ void kruskalMST(vector<Star>& listStar, vector<Edge>& listEdge) {
                 << edge.distance << "\n";
     }
     outFile.close();
+
+    // Calculate and print the space complexity
+    calculateSpaceComplexity(listStar, listEdge, parent, rank);
 }
+
+// Function to calculate time complexity
+void calculateTimeComplexity(vector<Star>& listStar, vector<Edge>& listEdge) {
+    auto start = high_resolution_clock::now();
+    kruskalMST(listStar, listEdge);
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start);
+
+    cout << "Time taken by Kruskal's algorithm: "
+         << duration.count() << " microseconds" << endl;
+}
+
+
 
 int main() {
     vector<Star> listStar;
     vector<Edge> listEdge;
     loadFromFile(listStar, listEdge, "stars_data.txt");
 
-    kruskalMST(listStar, listEdge);
-
+    calculateTimeComplexity(listStar, listEdge);
+    
     cout << "MST generated and saved to mst_output.txt" << endl;
 
     return 0;
