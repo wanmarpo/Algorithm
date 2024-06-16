@@ -7,12 +7,25 @@
 
 using namespace std;
 
-// Function to print an array
-void printArray(const vector<int>& arr) {
-    for (int i : arr) {
-        cout << i << " ";
+void selectionsort(vector<int>& arr) {
+    int i, j, min_idx, temp;
+    
+    for (i = 0; i < arr.size() - 1; i++) {
+        min_idx = i;
+        temp = arr[i];
+        
+        for (j = i + 1; j < arr.size(); j++) {
+            if (arr[j] < temp) {
+                min_idx = j;
+                temp = arr[j];
+            }
+        }
+        
+        if (min_idx!= i) {
+            arr[i] = arr[min_idx];
+            arr[min_idx] = temp;
+        }
     }
-    cout << endl;
 }
 
 int main() {
@@ -34,14 +47,15 @@ int main() {
 
         File.close(); // close the input file
 
+
         // Start timing
         auto time_start = chrono::high_resolution_clock::now();
         
-
+        
         // Debugging output: size of the array
         cout << "Array size: " << arr.size() << endl;
 
-        // SelectionSort
+        // Using std::sort instead of selectionsort so that it is faster 
         selectionsort(arr);
 
         // Stop timing
@@ -59,6 +73,7 @@ int main() {
             cerr << "Error in file: " << outputFilename << endl;
             continue;
         }
+
 
         for (int i : arr) {
             outputFile << i << " ";
