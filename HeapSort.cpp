@@ -53,9 +53,6 @@ int main() {
             continue;
         }
 
-        // Start timing
-        auto start = chrono::high_resolution_clock::now();
-
         // Read data from file
         int num;
         while (file >> num) 
@@ -63,6 +60,11 @@ int main() {
             arr.push_back(num);
         }
         file.close();
+
+        
+        // Start timing
+        auto start = chrono::high_resolution_clock::now();
+
 
         // Perform heap sort
         heapSort(arr);
