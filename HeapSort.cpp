@@ -33,7 +33,6 @@ void heapSort(vector<int>& arr) {
     for (int i = N / 2 - 1; i >= 0; i--)
         heapify(arr, N, i);
 
-    // One by one extract an element from heap
     for (int i = N - 1; i > 0; i--) {
         swap(arr[0], arr[i]);
         heapify(arr, i, 0);
@@ -63,15 +62,15 @@ int main() {
 
         
         // Start timing
-        auto start = chrono::high_resolution_clock::now();
+        auto start_timer = chrono::high_resolution_clock::now();
 
 
         // Perform heap sort
         heapSort(arr);
 
          // Stop timing
-        auto stop = chrono::high_resolution_clock::now();
-        chrono::duration<double> duration = stop - start;
+        auto stop_timer = chrono::high_resolution_clock::now();
+        chrono::duration<double> duration = stop_timer - start_timer;
 
         // Print time taken
         cout << "Time taken for heap sort of dataset " << i << ": " << duration.count() << " seconds" << endl;
