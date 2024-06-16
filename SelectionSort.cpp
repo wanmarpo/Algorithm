@@ -27,9 +27,6 @@ int main() {
             continue;
         }
 
-        // Start timing
-        auto time_start = chrono::high_resolution_clock::now();
-        
         int num;
         while (File >> num) {
             arr.push_back(num); // read numbers from file and store in vector
@@ -37,12 +34,15 @@ int main() {
 
         File.close(); // close the input file
 
+        // Start timing
+        auto time_start = chrono::high_resolution_clock::now();
+        
 
         // Debugging output: size of the array
         cout << "Array size: " << arr.size() << endl;
 
-        // Using std::sort instead of selectionsort so that it is faster 
-        std::sort(arr.begin(), arr.end());
+        // SelectionSort
+        selectionsort(arr);
 
         // Stop timing
         auto time_stop = chrono::high_resolution_clock::now();
